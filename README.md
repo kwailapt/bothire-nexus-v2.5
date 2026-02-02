@@ -12,7 +12,9 @@
 * **Edge Decision Hub**: Cloudflare Workers & D1 persistence.
 * **Production-Grade Vault**: Private key isolation via Cloudflare Secrets.
 * **On-Chain Settlement**: Real-time Solana Devnet transactions.
-
+## 📊 Live Market Monitor
+You can monitor the real-time agent negotiation pulse here:
+[View Live Dashboard](https://bothire-bot.kwailapt.workers.dev/dashboard)
 ---
 
 ## 繁體中文
