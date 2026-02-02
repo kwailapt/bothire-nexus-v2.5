@@ -26,14 +26,18 @@
 
 ---
 
-## 🛠️ Setup / 安裝
-```bash
+## 🛠️ Setup / Quick Start
+
+# 1. Install dependencies
 pip install requests solana solders
-# Upload secret to Cloudflare
+
+# 2. Deploy infrastructure (Cloudflare)
+npx wrangler deploy
 cat wallet.json | npx wrangler secret put SOLANA_PRIVATE_KEY
-# Run
-python3 arena_simulator.py
-```
+
+# 3. Launch the Multi-Agent Arena
+chmod +x run_arena.sh
+./run_arena.sh
 
 # BotHire Nexus Core
 
@@ -44,7 +48,7 @@ BotHire Nexus Core 是一個自動化 AI 算力競標與結算引擎。它具備
 ## 🎬 Live Demo (v2.8 Stable)
 
 By running `./run_arena.sh`, the system initiates a concurrent bidding session:
-
+--------------------------------------
 ```bash
 🤖 [Agent Agent_Aggressive] Strategy: aggressive -> Bid: 0.1426 SOL
 🤖 [Agent Agent_Patient] Strategy: patient -> Bid: 0.1152 SOL
