@@ -5,6 +5,25 @@ export default {
 
     const url = new URL(request.url);
 
+    // 【關鍵修改】把 Dashboard 移到驗證之前
+    if (url.pathname === "/dashboard") {
+      const { results } = await database.prepare(
+        "SELECT agent_id, budget, status, created_at FROM deals ORDER BY created_at DESC LIMIT 50"
+      ).all();
+
+      // ... (這裡保留原本那一大段 HTML/Chart.js 代碼) ...
+      const html = `...`; // (代碼同上，此處略)
+      return new Response(html, { headers: { "Content-Type": "text/html" } });
+    }
+
+    // --- 以下是需要密鑰的 API 區域 ---
+    const authKey = request.headers.get("X-BotHire-Key");
+    if (authKey !== "bothire_admin_secret_8020") return new Response("Unauthorized", { status: 401 });
+
+    // ... (原本的 /v1/negotiate 邏輯) ...
+  }
+}
+
     // 路由 1: 儀表板可視化頁面 (不需要 Auth Key，方便直接瀏覽)
     if (url.pathname === "/dashboard") {
       const { results } = await database.prepare(
